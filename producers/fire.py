@@ -33,6 +33,21 @@ def events():
             location=random.choice(entry_points)
             detection_time=datetime.now().strftime("%Y-%m-%dT%H:%M:%S")
 
+            intruder_alert={
+                "location": location,
+                "activity": "intruder_detected",
+                "time": detection_time
+            }
+            producer.send('intruder-detection', intruder_alert)
+            print(f"Produced intruder event: {intruder_alert}")
+
+
+        time.sleep(150)
+
+
+if __name__ == "__main__":
+    events()            
+
 
     
 
