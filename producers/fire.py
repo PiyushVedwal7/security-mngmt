@@ -26,6 +26,14 @@ def events():
                 "time": alert_time
 
             }
+            producer.send('fire-alert', fire_event)
+            print(f"Produced fire alert: {fire_event}")
+
+        if random.random()<0.05:
+            location=random.choice(entry_points)
+            detection_time=datetime.now().strftime("%Y-%m-%dT%H:%M:%S")
+
+
     
 
 
